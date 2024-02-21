@@ -45,3 +45,9 @@ Build docker image:
 ```shell
 docker compose build
 ```
+
+Install pre-commit hook:
+
+```shell
+pre-commit install
+```
