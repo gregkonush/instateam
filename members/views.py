@@ -11,7 +11,7 @@ def index(request):
 
 
 def create(request):
-    return HttpResponse("creation endpoint")
+    return render(request, "members/create.html")
 
 
 def detail(request, member_id):
