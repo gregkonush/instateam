@@ -37,7 +37,7 @@ pipenv install
 Start docker compose containers for development:
 
 ```shell
-docker compose up
+docker compose up -d
 ```
 
 Build docker image:

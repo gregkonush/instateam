@@ -8,6 +8,7 @@ primary_region = 'sjc'
 console_command = '/code/manage.py shell'
 
 [build]
+  dockerfile = "Dockerfile.prod"
 
 [deploy]
   release_command = 'python manage.py migrate --noinput'

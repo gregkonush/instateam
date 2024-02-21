@@ -19,23 +19,35 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Set the project base directory
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Take environment variables from .env file
 environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
+# False if not in os.environ because of casting above
 DEBUG = env("DEBUG")
 
+# Raises Django's ImproperlyConfigured
+# exception if SECRET_KEY not in os.environ
 SECRET_KEY = env("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Parse database connection url strings
+# like psql://user:pass@127.0.0.1:8458/db
+DATABASES = {
+    # read os.environ['DATABASE_URL'] and raises
+    # ImproperlyConfigured exception if not found
+    #
+    # The db() method is an alias for db_url().
+    "default": env.db(),
+}
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(",")
 
 # Application definition
 
 INSTALLED_APPS = [
+    "members.apps.MembersConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
