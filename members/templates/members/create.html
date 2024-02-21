@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+<div class="bg-zinc-50 rounded py-8 px-4">
+  <div class="flex flex-row justify-end">
+    <button class="text-blue-600 underline">
+      <a href="/members">All members</a>
+    </button>
+  </div>
+  <h1 class="text-zinc-800 text-2xl font-semibold">Add a team member</h1>
+  <div class="text-zinc-500 text-sm border-b pb-7">
+    Set email, phone number and role.
+  </div>
+  <form class="py-4 flex flex-col space-y-4 items-start text-sm text-zinc-600">
+    <h3 class="text-lg font-semibold">Info</h3>
+    <input placeholder="First name" class="rounded border-zinc-300" />
+    <input placeholder="Last name" class="rounded border-zinc-300" />
+    <input placeholder="Email" type="email" class="rounded border-zinc-300" />
+    <input
+      placeholder="Phone number"
+      class="rounded border-zinc-300"
+      type="email"
+    />
+    <h3 class="text-lg font-semibold">Role</h3>
+    <div class="space-x-4">
+      <label>Regular - Can't delete members</label>
+      <input type="checkbox" value="regular" />
+    </div>
+    <div class="space-x-4">
+      <label>Admin - Can delete members</label>
+      <input type="checkbox" value="regular" />
+    </div>
+    <button
+      type="submit"
+      class="bg-blue-700 hover:bg-blue-600 rounded text-gray-200 px-6 py-2"
+    >
+      Save
+    </button>
+  </form>
+</div>
