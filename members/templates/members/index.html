@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Members</title>
-  </head>
-  <body>
-    {% if members %}
-    <ul>
-      {% for member in members %}
-      <li><div>{{ member.first_name }}</div></li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </body>
-</html>
+{% include 'base.html' %}
+<div class="bg-zinc-50 rounded py-8 px-4">
+  <div class="flex flex-row justify-end">
+    <button class="text-blue-600 underline">Add</button>
+  </div>
+  <h1 class="text-zinc-800 text-2xl font-semibold">Team members</h1>
+  <div class="text-zinc-500 text-sm border-b pb-7">
+    You have 3 team members.
+  </div>
+  {% if members %}
+  <ul class="divide-y">
+    {% for member in members %}
+    <li class="py-4 border-b">
+      <div class="flex space-x-4 items-center">
+        <div class="rounded-full bg-zinc-300 h-12 w-12"></div>
+        <div class="flex flex-col space-y-1">
+          <div class="font-semibold text-zinc-800/80">{{member}}</div>
+          <div class="text-zinc-500 text-sm">{{member.phone_number}}</div>
+          <div class="text-zinc-500 text-sm">{{member.email}}</div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
