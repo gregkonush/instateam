@@ -1,4 +1,6 @@
 version: "3"
+networks:
+  app:
 services:
   db:
     image: postgres
@@ -10,20 +12,5 @@ services:
       - POSTGRES_DB=instateam
       - POSTGRES_USER=instateam
       - POSTGRES_PASSWORD=instateam
-  web:
-    build: .
-    ports:
-      - 8000:8000
-    volumes:
-      - ./:/code
-      - ./Pipfile:/code/Pipfile
-      - ./Pipfile.lock:/code/Pipfile.lock
-    depends_on:
-      - db
-    environment:
-      - DJANGO_DB_HOST=db
-      - DJANGO_DB_PORT=5432
-      - DJANGO_DB_NAME=instateam
-      - DJANGO_DB_USER=instateam
-      - DJANGO_DB_PASSWORD=instateam
-    working_dir: /code
+    networks:
+      - app

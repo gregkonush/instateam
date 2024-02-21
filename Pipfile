@@ -14,3 +14,8 @@ pre-commit = "*"
 
 [requires]
 python_version = "3.12"
+
+[scripts]
+start = "python manage.py runserver 8000"
+migrate = "python manage.py migrate"
+makemigrations = "python manage.py makemigrations"
