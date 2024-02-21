@@ -33,3 +33,15 @@ Create a virtual environment with Pipfile:
 ```shell
 pipenv install
 ```
+
+Start docker compose containers for development:
+
+```shell
+docker compose up
+```
+
+Build docker image:
+
+```shell
+docker compose build
+```

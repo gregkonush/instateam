@@ -1,0 +1,28 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=instateam
+      - POSTGRES_USER=instateam
+      - POSTGRES_PASSWORD=instateam
+  web:
+    build: .
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_NAME=instateam
+      - DJANGO_DB_USER=instateam
+      - DJANGO_DB_PASSWORD=instateam
+    working_dir: /app
+    command: sh -c "pipenv run python manage.py runserver 0.0.0.0:8000"
