@@ -15,7 +15,9 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./:/app
+      - ./:/code
+      - ./Pipfile:/code/Pipfile
+      - ./Pipfile.lock:/code/Pipfile.lock
     depends_on:
       - db
     environment:
@@ -24,5 +26,4 @@ services:
       - DJANGO_DB_NAME=instateam
       - DJANGO_DB_USER=instateam
       - DJANGO_DB_PASSWORD=instateam
-    working_dir: /app
-    command: sh -c "pipenv run python manage.py runserver 0.0.0.0:8000"
+    working_dir: /code
