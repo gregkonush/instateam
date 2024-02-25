@@ -1,5 +1,7 @@
 # Instateam
 
+[Visit Demo](https://instateam.fly.io/members)
+
 ## Installation instructions
 
 Install python with [pyenv](https://github.com/pyenv/pyenv):
