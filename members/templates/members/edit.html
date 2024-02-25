@@ -5,14 +5,14 @@
       <a href="/members">All members</a>
     </button>
   </div>
-  <h1 class="text-zinc-800 text-2xl font-semibold">Add a team member</h1>
+  <h1 class="text-zinc-800 text-2xl font-semibold">Edit a team member</h1>
   <div class="text-zinc-500 text-sm border-b pb-7">
-    Set email, phone number and role.
+    Edit email, phone number and role.
   </div>
   <form
     class="pt-4 flex flex-col space-y-4 items-start text-sm text-zinc-600"
     method="post"
-    action="{% url 'create' %}"
+    action="{% url 'edit' member.id %}"
   >
     <legend class="text-lg font-semibold">Info</legend>
     {% csrf_token %}
@@ -20,6 +20,7 @@
     <input
       type="text"
       name="first_name"
+      value="{{ member.first_name }}"
       maxlength="30"
       required=""
       class="rounded border-zinc-300"
@@ -30,6 +31,7 @@
     <input
       type="text"
       name="last_name"
+      value="{{ member.last_name }}"
       maxlength="30"
       required=""
       class="rounded border-zinc-300"
@@ -40,6 +42,7 @@
     <input
       type="email"
       name="email"
+      value="{{ member.email }}"
       maxlength="256"
       required=""
       class="rounded border-zinc-300"
@@ -51,6 +54,7 @@
       type="text"
       name="phone_number"
       maxlength="50"
+      value="{{ member.phone_number }}"
       required=""
       class="rounded border-zinc-300"
       placeholder="123-456-7890"
@@ -64,33 +68,31 @@
           class="flex flex-row items-center space-x-5 justify-between border-b border-b-zinc-300 py-4"
         >
           <div>Regular - Can't delete members</div>
-          <input
-            type="radio"
-            name="role"
-            value="REG"
-            required=""
-            id="id_role_1"
-          />
+          <input {% if member.role == 'REG' %} checked {% endif %} type="radio"
+          name="role" value="REG" required id="id_role_1" />
         </label>
         <label
           for="id_role_0"
           class="flex flex-row items-center space-x-5 justify-between border-b border-b-zinc-300 py-4"
         >
           <div>Admin - Can delete members</div>
-          <input
-            type="radio"
-            name="role"
-            value="ADM"
-            required=""
-            id="id_role_0"
-          />
+          <input {% if member.role == 'ADM' %} checked {% endif %} type="radio"
+          name="role" value="ADM" required id="id_role_0" />
         </label>
       </div>
     </fieldset>
-    <div class="pt-5 flex flex-row items-center ml-36">
+    <div class="pt-5 flex flex-row">
       <button
         type="submit"
-        class="bg-blue-700 hover:bg-blue-600 px-6 py-2 rounded text-gray-200 w-24"
+        name="delete"
+        class="rounded px-6 py-2 border border-zinc-300 w-24 text-red-500"
+      >
+        Delete
+      </button>
+      <button
+        type="submit"
+        name="save"
+        class="ml-12 px-6 py-2 bg-blue-700 hover:bg-blue-600 rounded text-gray-200 w-24"
       >
         Save
       </button>
