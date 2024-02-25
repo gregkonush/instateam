@@ -22,19 +22,20 @@ Install django:
 pip install django
 ```
 
-Install [pipenv](https://pipenv.pypa.io/en/latest/) for managing virtual environments:
+Install [pipx](https://github.com/pypa/pipx) for isolated python apps
+Install [poetry](https://python-poetry.org/docs/#installation) for managing virtual environments:
 
 ```shell
-pip install pipenv
+pipx install poetry
 ```
 
-Create a virtual environment with Pipfile:
+Create a virtual environment with poetry:
 
 ```shell
-pipenv install
+poetry shell
 ```
 
-Start docker compose containers for development:
+Start docker compose db container for development:
 
 ```shell
 docker compose up -d
@@ -55,11 +56,11 @@ pre-commit install
 To run tailwindcss styling server:
 
 ```shell
-pipenv run tailwind
+poetry run python manage.py tailwind start
 ```
 
 Build production minified css:
 
 ```shell
-pipenv run manage.py tailwind build
+poetry run python manage.py tailwind build
 ```

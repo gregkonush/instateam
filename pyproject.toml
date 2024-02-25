@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "instateam"
+version = "1.0.0"
+description = ""
+authors = ["Greg Konush <gkonushev@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.2"
+psycopg2 = "^2.9.9"
+django-environ = "^0.11.2"
+django-tailwind = {extras = ["reload"], version = "^3.8.0"}
+whitenoise = "^6.6.0"
+gunicorn = "^21.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+pre-commit = "^3.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
