@@ -35,5 +35,26 @@ def create(request):
     return render(request, "members/create.html")
 
 
-def detail(request, member_id):
-    return HttpResponse("details about one member")
+def edit(request, member_id):
+    if request.method == "POST":
+
+        if "delete" in request.POST:
+            member = Member.objects.get(pk=member_id)
+            member.delete()
+            return HttpResponseRedirect("/members")
+
+        form = MemberForm(request.POST)
+        if form.is_valid():
+            member = Member.objects.get(pk=member_id)
+            member.first_name = form.cleaned_data["first_name"]
+            member.last_name = form.cleaned_data["last_name"]
+            member.email = form.cleaned_data["email"]
+            member.phone_number = form.cleaned_data["phone_number"]
+            member.role = form.cleaned_data["role"]
+            member.team = Team.objects.first()
+            member.save()
+
+        return HttpResponseRedirect("/members")
+    member = Member.objects.get(pk=member_id)
+    context = {"member": member}
+    return render(request, "members/edit.html", context)
