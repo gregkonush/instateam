@@ -1,6 +1,6 @@
 # Instateam
 
-[Visit Demo](https://instateam.fly.io/members)
+[App Demo](https://instateam.fly.dev/members/)
 
 ## Installation instructions
 
