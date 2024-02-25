@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Member, Team
+from django.http import HttpResponseRedirect
+from .models import Member
 from .forms import MemberForm
 
 
@@ -20,14 +20,12 @@ def create(request):
             email = form.cleaned_data["email"]
             phone_number = form.cleaned_data["phone_number"]
             role = form.cleaned_data["role"]
-            team = Team.objects.first()
             member = Member(
                 first_name=first_name,
                 last_name=last_name,
                 email=email,
                 phone_number=phone_number,
                 role=role,
-                team=team,
             )
             member.save()
 
@@ -51,7 +49,6 @@ def edit(request, member_id):
             member.email = form.cleaned_data["email"]
             member.phone_number = form.cleaned_data["phone_number"]
             member.role = form.cleaned_data["role"]
-            member.team = Team.objects.first()
             member.save()
 
         return HttpResponseRedirect("/members")
