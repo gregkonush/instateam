@@ -51,3 +51,9 @@ Install pre-commit hook:
 ```shell
 pre-commit install
 ```
+
+To run tailwindcss styling server:
+
+```shell
+pipenv run tailwind
+```
