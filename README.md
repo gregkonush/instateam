@@ -57,3 +57,9 @@ To run tailwindcss styling server:
 ```shell
 pipenv run tailwind
 ```
+
+Build production minified css:
+
+```shell
+pipenv run manage.py tailwind build
+```
